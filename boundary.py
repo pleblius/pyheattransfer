@@ -1,3 +1,5 @@
-class Boundary:
-    pass
+from gameobject import GameObject
 
+
+class Boundary(GameObject):
+    pass
