@@ -1,4 +1,4 @@
-from gameobject import GameObject
+from src.gameobject import GameObject
 
 
 class Boundary(GameObject):

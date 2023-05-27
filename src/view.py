@@ -1,5 +1,5 @@
 import pygame
-from state import State
+from src.state import State
 """A module to control the display for the application.
     
 Houses all the necessary information and methods to draw the game-state to the screen."""

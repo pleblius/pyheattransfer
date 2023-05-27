@@ -1,5 +1,5 @@
-from wall import Wall
-from boundary import Boundary
+from src.wall import Wall
+from src.boundary import Boundary
 
 
 class State:
