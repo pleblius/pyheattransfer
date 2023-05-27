@@ -1,54 +1,60 @@
 import tkinter as tk
-import src.controller as controller
+"""This represents a MenuBar object, an extension of the tkinter menu class. Contains all of the cascading
+menu options necessary for the heat transfer application"""
 
-def generate_menu_bar(window: tk.Tk):
-    """Generates a new menu bar at the top of the application window.
 
-    The menu bar generated will contain multiple cascading menus, similar to standard Windows applications.
-    TODO: IMPLEMENT ALL MENU OPTIONS AND COMMANDS
-    TODO: ADD LIST OF MENU OPTIONS"""
+class MenuBar(tk.Menu):
+    def __init__(self, master):
+        super().__init__(master=master)
 
-    #  Link menubar to main window
-    menubar = tk.Menu(window)
-    window.config(menu=menubar)
+        self.generate_file()
+        self.generate_edit()
+        self.generate_view()
 
-    menubar.add_cascade(label='File', menu=generate_file_menu(menubar))
-    menubar.add_cascade(label='Edit', menu=generate_edit_menu(menubar))
-    menubar.add_cascade(label='View', menu=generate_view_menu(menubar))
-    menubar.add_cascade(label='Options', menu=generate_options_menu(menubar))
-    menubar.add_cascade(label='Tools', menu=generate_tools_menu(menubar))
-    menubar.add_cascade(label='Help', menu=generate_help_menu(menubar))
+    def generate_file(self):
+        """Generates the File cascading menu, containing options for file manipulation.
 
-    return menubar
+        New generates a new file.
+        Save saves the current file.
+        Open loads a previously saved file.
+        Exit terminates the application."""
 
-def generate_file_menu(menubar):
-    """Generates the File cascading menu option for the menu bar.
+        file_menu = tk.Menu(master=self, tearoff=False)
 
-    Contains commands to generate a new application, save the current application, open a previously saved application,
-    and to exit the program.
-    TODO: IMPLEMENT NECESSARY COMMANDS"""
+        #  TODO: Implement commands
+        file_menu.add_command(label='New')
+        file_menu.add_command(label='Save')
+        file_menu.add_command(label='Load')
+        file_menu.add_separator()
+        file_menu.add_command(label='Exit', command=self.master.destroy)
 
-    filemenu = tk.Menu(menubar, tearoff=False)
+        self.add_cascade(label='File', menu=file_menu)
 
-    filemenu.add_command(label='New')
-    filemenu.add_command(label='Save')
-    filemenu.add_command(label='Load')
-    filemenu.add_separator()
-    filemenu.add_command(label='Exit', command=menubar.master.destroy)
+    def generate_edit(self):
+        """Generates the Edit cascading menu, containing options to edit the application and the objects
+        in it.
 
-    return filemenu
+        Materials opens a new window to edit material properties.
+        Options opens a new window to edit document options"""
 
-def generate_edit_menu(menubar):
-    pass
+        edit_menu = tk.Menu(master=self, tearoff=False)
 
-def generate_view_menu(menubar):
-    pass
+        #  TODO: Implement commands
+        edit_menu.add_command(label='Materials')
+        edit_menu.add_command(label='Options')
 
-def generate_tools_menu(menubar):
-    pass
+        self.add_cascade(label='Edit', menu=edit_menu)
 
-def generate_help_menu(menubar):
-    pass
+    def generate_view(self):
+        """Generates the View cascading menu, with options to edit the view properties for the application.
 
-def generate_options_menu(menubar):
-    pass
+        Mode opens a popup to toggle the view between setup and heat-map.
+        Plot generates a new tempature plot for a given object."""
+
+        view_menu = tk.Menu(master=self, tearoff=False)
+
+        #  TODO: Implement Commands
+        view_menu.add_command(label='Mode')
+        view_menu.add_command(label='Plot')
+
+        self.add_cascade(label='View', menu=view_menu)

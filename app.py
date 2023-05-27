@@ -1,25 +1,36 @@
-import pygame
-from src.objects.state import State
-from src.controller import Controller
-from src import view
-from src.objects.wall import Wall
+import tkinter as tk
+import src.state as state, src.controller as controller
+from src.view import appframe as af, menuframe as mf, menubar as mb, popupwindow as pw
+"""A module to control the display for the application.
 
-pygame.init()
-state = State()
-controller = Controller(state)
-state.add_wall(Wall("wall1"))
+Initiates the main window and draw loop, then calls all necessary
+modules and functions to draw the application to the screen."""
 
-#  Basic game loop - gets events from the user and sends them to the controller to perform updates
-running = True
-while running:
-    #  Exit condition
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-        #  Other game event conditions
-        else:
-            controller.handle_event(event)
-            view.draw_game(state)
+#  Initial setup
+state = state.State()
+controller = controller.Controller(state)
 
+#  Initialize application window
+width, height = 800, 600
+window = tk.Tk()
+window.geometry(f"{width}x{height}")
 
-pygame.quit()
+#  Generate mboptions at the top of the window
+menubar = mb.MenuBar(window)
+window.config(menu=menubar)
+
+#  Generate grid to hold application window and application menu frames
+appframe = af.AppFrame(master=window)
+appframe['borderwidth'] = 4
+appframe['relief'] = 'sunken'
+appframe.grid(row=0, column=0, sticky="nsw")
+
+menuframe = mf.MenuFrame(master=window, controller=controller)
+menuframe['borderwidth'] = 4
+menuframe['relief'] = 'flat'
+menuframe.grid(row=0, column=1, sticky="nse")
+
+window.columnconfigure([0, 1], weight=1, minsize=250)
+window.rowconfigure(0, weight=1, minsize=300)
+
+window.mainloop()

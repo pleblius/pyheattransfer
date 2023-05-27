@@ -1,4 +1,4 @@
-from src.objects.state import State
+from src.state import State
 import pygame
 
 
@@ -10,5 +10,5 @@ class Controller:
     def __init__(self, state: State):
         self.state = state
 
-    def handle_event(self, event: pygame.event):
+    def create_wall(self):
         pass

@@ -18,12 +18,6 @@ class State:
     def add_boundary(self, new_boundary: Boundary):
         self.boundaries.add(new_boundary)
 
-    def start_frame(self):
-        pass
-
-    def finish_frame(self):
-        pass
-
     def save_state(self):
         pass
 
