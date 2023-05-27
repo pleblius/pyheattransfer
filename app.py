@@ -1,6 +1,13 @@
 import pygame
+from state import State
+from controller import Controller
+import view
+from wall import Wall
 
 pygame.init()
+state = State()
+controller = Controller(state)
+state.add_wall(Wall("wall1"))
 
 #  Basic game loop - gets events from the user and sends them to the controller to perform updates
 running = True
@@ -9,7 +16,10 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        #  Other game event conditions
+        else:
+            controller.handle_event(event)
+            view.draw_game(state)
 
-    
 
 pygame.quit()

@@ -14,8 +14,8 @@ def draw_game(state: State):
     displayWindow.fill(pygame.Color('cornsilk'))
 
     for wall in state.walls:
-        wall.draw()
+        wall.draw(displayWindow)
     for boundary in state.boundaries:
-        boundary.draw()
+        boundary.draw(displayWindow)
 
     pygame.display.flip()

@@ -1,4 +1,5 @@
 from state import State
+import pygame
 
 
 class Controller:
@@ -8,3 +9,6 @@ class Controller:
     objects update when necessary and passing user inputs to the proper functions and methods."""
     def __init__(self, state: State):
         self.state = state
+
+    def handle_event(self, event: pygame.event):
+        pass
