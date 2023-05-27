@@ -1,4 +1,4 @@
-from src.state import State
+from src.objects.state import State
 import pygame
 
 

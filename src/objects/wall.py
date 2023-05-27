@@ -1,6 +1,6 @@
 import pygame.draw
 
-from src.gameobject import GameObject
+from src.objects.gameobject import GameObject
 
 
 class Wall(GameObject):

@@ -1,8 +1,8 @@
 import pygame
-from src.state import State
+from src.objects.state import State
 from src.controller import Controller
 from src import view
-from src.wall import Wall
+from src.objects.wall import Wall
 
 pygame.init()
 state = State()
